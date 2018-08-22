@@ -1,14 +1,18 @@
 (ns fizzbuzz.core
   (:gen-class))
 
+; (function or macro args...)
+(defn fizzbuzz [x]
+  (if (= (rem x 15) 0)
+    "fizzbuzz"
+    (if (= (rem x 3) 0)
+      "fizz"
+      (if (= (rem x 5) 0)
+        "buzz"
+        x))))
+
 (defn -main []
   (loop [x 1]
     (when (<= x 100)
-      (if (= (rem x 15) 0)
-        (println "fizzbuzz")
-        (if (= (rem x 3) 0)
-          (println "fizz")
-          (if (= (rem x 5) 0)
-            (println "buzz")
-            (println x))))
+      (println (fizzbuzz x))
       (recur (+ x 1)))))
